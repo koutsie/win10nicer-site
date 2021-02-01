@@ -52,15 +52,12 @@
 	margin-top: 0px;
     margin-bottom: 0px;
     float: right;
-    width: 80px;
+    width: 120px;
     text-align: center;
     font-family: sans-serif;
     font-size: 14px;
     height: 20px;
     display: inline-block;
-    background-size: auto 65%;
-    background-position: 68% 40%;
-    background-repeat: no-repeat;
     border-top: 2px solid #cac6cb;
     border-left: 2px solid #cac6cb;
     border-right: 2px solid #cac6cb;
@@ -68,12 +65,24 @@
     /*-webkit-box-shadow: inset -2px -2px 0 0 white, inset 1px 1px 0 0, inset -2px -2px 0 0 white, inset 0px 0px 0 0 #dedcde; */
 
 }
-
 .toolbar .start-button:hover{
     background-color: darkgrey;
     cursor: pointer;
 }
-
+::-moz-selection {
+    background-color: transparent;
+    color: #000;
+}
+::selection {
+    background-color: transparent;
+    color: #000;
+}
+*, *::after, *::before {
+	-webkit-user-select: none;
+	-webkit-user-drag: none;
+	-webkit-app-region: no-drag;
+	cursor: default;
+}
 </style>
 </head>
 
