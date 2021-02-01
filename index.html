@@ -103,11 +103,11 @@
 
 </div>
 
-<div class="window" style="margin: 32px; width: 375px">
+<div class="window" style="position: sticky; left:90%; width: 375px;">
     <div class="title-bar">
         <div class="title-bar-text">About Windows</div>
         <div class="title-bar-controls">
-            <button aria-label="Close"></button>
+            <a href="javascript:close_window();"><button aria-label="Close"></button></a>
         </div>
     </div>
     <div class="window-body">
@@ -123,18 +123,18 @@ User
 Availbe physical memory to Windows:&nbsp;&nbsp;&nbsp;&nbsp;15856423,40 KB<br><br>
 System resources:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;99% availbe 
 <br><br><br><br>
-        </div>
+</div>
 </div>
 
-<drag id="main" style="cursor: move; position: absolute; left:500px; bottom: 30px;">
+<drag id="main" style="cursor: move; position: absolute; left:2%; bottom: 30px;">
   <div class="window" style="width: 420px;left:">
     <div class="title-bar">
       <div class="title-bar-text">
         win10nicer - Windows 10 Enterprise N LTSC 2019 64-bit
       </div>
         <div class="title-bar-controls">
-    	<button aria-label="Minimize"></button>
-    	<button aria-label="Restore"></button>
+    	<!-- <button aria-label="Minimize"></button>
+    	<button aria-label="Restore"></button> -->
     	<a href="javascript:close_window();"><button aria-label="Close"></button></a>
      </div>
     </div>
@@ -221,5 +221,12 @@ function dragElement(elmnt) {
 
 </script>
 <script>document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))</script>
+<script>
+function close_window() {
+  if (confirm("Close Windows?")) {
+    close();
+  }
+}
+</script>
 </body>
 </html>
