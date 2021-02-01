@@ -1,2 +1,124 @@
-<h1><span>welcome to windows that's almost good</span>/</h1>
-<h4>this page will be updated soon, i hope</h4>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>win10nicer</title>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="https://unpkg.com/98.css" />
+<style>
+hr {
+  margin: 0;
+  border: none;
+  width: 400px;
+  height: 1px;
+  opacity: 0.5;
+  background: linear-gradient(
+    to right,
+    red 20%,
+    yellow 20%,
+    yellow 36%,
+    green 36%,
+    green 60%,
+    blue 60%,
+    blue 100%
+  );
+}
+.toolbar {
+    z-index: 100;
+    display: inline-block;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 24px;
+    background-color: #B8B8B8;
+    border-top: 1px solid #d2d2d2;
+    box-shadow: 0 -1px 0 #ebebeb;
+}
+.toolbar .start-button {
+    float: left;
+    margin-top: 2px;
+    margin-left: 2px;
+    height: 90%;
+    padding: 2px 3px;
+    line-height: 1;
+    background-color: #B8B8B8;
+    float: left;
+    text-decoration: none;
+    color: black;
+    font-family: sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    border-top: 2px solid white;
+    border-left: 2px solid white;
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+}
+.toolbar .start-button:hover{
+    background-color: darkgrey;
+    cursor: pointer;
+}
+</style>
+</head>
+
+<body bgcolor="#008080">
+<div class="toolbar">
+<input type="checkbox" id="start-menu">
+<div class="lesel"><label for="start-menu" class="start-button">
+<span></span> Start
+</label></div>
+</div>
+
+<main>
+  <div class="window" style="width: 420px">
+    <div class="title-bar">
+      <div class="title-bar-text">
+        win10nicer - Windows 10 Enterprise N LTSC 2019 64-bit
+      </div>
+        <div class="title-bar-controls">
+    	<button aria-label="Minimize"></button>
+    	<button aria-label="Restore"></button>
+    	<button aria-label="Close"></button>
+     </div>
+    </div>
+    <div class="window-body">
+      <h5>Windows that's almost good.</h5>
+      <hr>
+      <p id="improvements">What's done to improve on Windows?</p>
+      <fieldset>
+	      <ul>
+          <li>All languages expect EN-US removed</li>
+	      <li>Reseal: OOBE</li>
+	      <li>SkipMachineOOBE: 1</li>
+	      <li>Microsoft-Windows-Deployment: OOBE</li>
+	      <li>DataCollection\AllowTelemetry: 0</li>
+	      <li>System\AllowLocation: 0</li>
+	      <li>System\EnableFirstLogonAnimation: 0</li>
+	      <li>Windows\DisableATMFD: 1</li>
+	      <li>CloudContent\DisableWindowsConsumerFeatures: 1</li>
+	      <li>Preferences\ModelDownloadAllowed: 0</li>
+	      <li>DeliveryOptimization\DODownloadMode: 0</li>
+	      <li>powercfg: /hibernate off</li>
+	      <li>Explorer\SmartScreenEnabled: Off</li>
+	      <li>Hyper-V VM: 0</li>
+	      <li>Parallels VM: 0</li>
+	      <li>Virtual Box VM: 0</li>
+	      <li>ContentDeliveryManager\SubscribedContent-310093Enabled: 0</li>
+	      <li>Desktop\ScreenSaverIsSecure: 0</li>
+	      <li>ContentDeliveryManager\SoftLandingEnabled: 0</li>
+	      <li>Explorer\NoThumbnailCache: 1 </li>
+	      <li>Explorer\NoCDBurning: 1</li>
+	      <li>Explorer\ClearRecentDocsOnExit: 1</li>
+	      <li>System\AllowExperimentation: 0</li>
+	      <li>ContentDeliveryManager\SilentInstalledAppsEnabled: 0</li>
+	      <li>TrainedDataStore\HarvestContacts: 0</li>
+	      <li>InputPersonalization\RestrictImplicitTextCollection: 1</li>
+	      <li>InputPersonalization\RestrictImplicitInkCollection: 1</li>
+	      <li>Windows Search\AllowCortana: 0</li>
+	      </ul>
+      </fieldset>
+     <h6>Mon  1 Feb 18:27:05 EET 2021</h6>
+    </div>
+  </div>
+<main>
+</body>
+</html>
