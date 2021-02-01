@@ -107,9 +107,10 @@ hr {
 </div>
 
 </div>
-
+<drag id="main" draggable="true" style="cursor: move; position: absolute;">
   <div class="window" style="width: 420px;">
-    <div id="main1" class="title-bar main" draggable="true" style="cursor: move;">
+  </drag>
+    <div class="title-bar main">
       <div class="title-bar-text">
         win10nicer - Windows 10 Enterprise N LTSC 2019 64-bit
       </div>
@@ -162,49 +163,43 @@ hr {
             <p class="status-bar-field">2021-02-01 19:46:29</p>
           </div>
   </div>
+
 <script>
-var startx = 0;
-var starty = 0;
-dragStartHandler = function(e) {
-  startx = e.clientX;
-  starty = e.clientY;
-}
+dragElement(document.getElementById("main"));
 
-dragOverHandler = function(e) {
-  e.preventDefault();
-  return false;
-}
-
-dragEndHandler = function(e) {
-  if(!startx || !starty) {
-    return false;
+function dragElement(elmnt) {
+  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  if (document.getElementById(elmnt.id + "header")) {
+    document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+  } else {
+    elmnt.onmousedown = dragMouseDown;
   }
-  
-  var diffx = e.clientX - startx;
-  var diffy = e.clientY - starty;
-  
-  var rect = e.target.getBoundingClientRect();
 
-var offset = { 
-                top: rect.top + window.scrollY, 
-                left: rect.left + window.scrollX, 
-            };
-  
-  var newleft = offset.left + diffx;
-  var newtop = offset.top + diffy;
-  
-  e.target.style.position = 'absolute';
-  e.target.style.left = newleft + 'px';
-  e.target.style.top = newtop + 'px';
-  
-  startx = 0;
-  starty = 0;
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    document.onmousemove = elementDrag;
+  }
+
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+  }
+
+  function closeDragElement() {
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
 }
-
-document.getElementsByClassName("main")[0].addEventListener('dragstart', dragStartHandler);
-
-document.addEventListener('dragover', dragOverHandler);
-document.addEventListener('drop', dragEndHandler);
 </script>
 </body>
 </html>
