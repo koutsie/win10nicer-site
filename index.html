@@ -3,6 +3,7 @@
 <head>
   <title>win10nicer</title>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width">
   <link rel="stylesheet" href="https://unpkg.com/98.css" />
 <style>
 hr {
@@ -22,6 +23,19 @@ hr {
     blue 100%
   );
 }
+.status-bar {
+  margin: 0px 1px;
+  display: flex;
+  gap: 1px;
+}
+
+.status-bar-field {
+  box-shadow: inset -1px -1px  #dfdfdf, 
+    inset 1px 1px #808080;
+  flex-grow: 1;
+  padding: 2px 3px;
+  margin: 0;
+}
 .toolbar {
     z-index: 100;
     display: inline-block;
@@ -39,13 +53,11 @@ hr {
     margin-top: 2px;
     margin-left: 2px;
     height: 90%;
-    padding: 2px 3px;
+    padding: 0px 4px;
     line-height: 1;
     background-color: #B8B8B8;
-    float: left;
     text-decoration: none;
     color: black;
-    font-family: sans-serif;
     font-size: 12px;
     font-weight: bold;
     border-top: 2px solid white;
@@ -53,6 +65,26 @@ hr {
     border-right: 2px solid black;
     border-bottom: 2px solid black;
 }
+.toolbar .notif {
+	margin-top: 0px;
+    margin-bottom: 0px;
+    float: right;
+    width: 30px;
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 14px;
+    height: 20px;
+    display: inline-block;
+    background-size: auto 65%;
+    background-position: 68% 40%;
+    background-repeat: no-repeat;
+    border-top: 2px solid #cac6cb;
+    border-left: 2px solid #cac6cb;
+    border-right: 2px solid #cac6cb;
+    border-bottom: 2px solid #cac6cb;
+    -webkit-box-shadow: inset -2px -2px 0 0 white, inset 1px 1px 0 0, inset -2px -2px 0 0 white, inset 0px 0px 0 0 #dedcde;
+}
+
 .toolbar .start-button:hover{
     background-color: darkgrey;
     cursor: pointer;
@@ -63,21 +95,28 @@ hr {
 <body bgcolor="#008080">
 <div class="toolbar">
 <input type="checkbox" id="start-menu">
-<div class="lesel"><label for="start-menu" class="start-button">
-<span></span> Start
-</label></div>
+<div><label for="start-menu" class="start-button">
+<span></span><img src="https://win10nicer.thinkingabout.today/w93.png" alt="win93 start button logo lol">‏‏‎ ‎Start
+</label>
 </div>
 
-<main>
-  <div class="window" style="width: 420px">
-    <div class="title-bar">
+<input type="checkbox" id="notif">
+<div><label for="notif" class="notif">
+<span></span> Sex
+</label>
+</div>
+
+</div>
+
+  <div class="window" style="width: 420px;">
+    <div id="main1" class="title-bar main" draggable="true" style="cursor: move;">
       <div class="title-bar-text">
         win10nicer - Windows 10 Enterprise N LTSC 2019 64-bit
       </div>
         <div class="title-bar-controls">
     	<button aria-label="Minimize"></button>
     	<button aria-label="Restore"></button>
-    	<button aria-label="Close"></button>
+    	<a href="javascript:close_window();"><button aria-label="Close"></button></a>
      </div>
     </div>
     <div class="window-body">
@@ -116,9 +155,56 @@ hr {
 	      <li>Windows Search\AllowCortana: 0</li>
 	      </ul>
       </fieldset>
-     <h6>Mon  1 Feb 18:27:05 EET 2021</h6>
     </div>
+			<div class="status-bar">
+            <p class="status-bar-field">windows10nicer</p>
+            <p class="status-bar-field">beta 2</p>
+            <p class="status-bar-field">2021-02-01 19:46:29</p>
+          </div>
   </div>
-<main>
+<script>
+var startx = 0;
+var starty = 0;
+dragStartHandler = function(e) {
+  startx = e.clientX;
+  starty = e.clientY;
+}
+
+dragOverHandler = function(e) {
+  e.preventDefault();
+  return false;
+}
+
+dragEndHandler = function(e) {
+  if(!startx || !starty) {
+    return false;
+  }
+  
+  var diffx = e.clientX - startx;
+  var diffy = e.clientY - starty;
+  
+  var rect = e.target.getBoundingClientRect();
+
+var offset = { 
+                top: rect.top + window.scrollY, 
+                left: rect.left + window.scrollX, 
+            };
+  
+  var newleft = offset.left + diffx;
+  var newtop = offset.top + diffy;
+  
+  e.target.style.position = 'absolute';
+  e.target.style.left = newleft + 'px';
+  e.target.style.top = newtop + 'px';
+  
+  startx = 0;
+  starty = 0;
+}
+
+document.getElementsByClassName("main")[0].addEventListener('dragstart', dragStartHandler);
+
+document.addEventListener('dragover', dragOverHandler);
+document.addEventListener('drop', dragEndHandler);
+</script>
 </body>
 </html>
