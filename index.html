@@ -126,12 +126,9 @@ System resources:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb
         </div>
 </div>
 
-
-
-<drag id="main" style="cursor: move; position: absolute;">
-  <div class="window" style="width: 420px;">
-  </drag>
-    <div class="title-bar main">
+<drag id="main" style="cursor: move; position: absolute; left:500px; bottom: 30px;">
+  <div class="window" style="width: 420px;left:">
+    <div class="title-bar">
       <div class="title-bar-text">
         win10nicer - Windows 10 Enterprise N LTSC 2019 64-bit
       </div>
@@ -178,7 +175,7 @@ System resources:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb
 	      </ul>
       </fieldset>
     </div>
-			<div class="status-bar">
+			<span><div class="status-bar"></span>
             <p class="status-bar-field">windows10nicer</p>
             <p class="status-bar-field">beta 2</p>
             <p class="status-bar-field">2021-02-01 19:46:29</p>
@@ -221,6 +218,7 @@ function dragElement(elmnt) {
     document.onmousemove = null;
   }
 }
+
 </script>
 <script>document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))</script>
 </body>
