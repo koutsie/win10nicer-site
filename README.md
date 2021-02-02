@@ -12,4 +12,5 @@
 
 --------
 ~~if you have a solution to make all the divs dragable, please please make a pull request.~~
+
 *Update: i found a way to do it, and it even brings windows to the top while dragging!*
