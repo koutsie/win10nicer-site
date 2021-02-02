@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>win10nicer</title>
+  <title>w98shell | win10nicer</title>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width">
   <link rel="stylesheet" href="https://unpkg.com/98.css" />
@@ -20,7 +20,7 @@
   margin: 0;
 }
 .toolbar {
-    z-index: 100;
+    z-index: 2147483647;
     display: inline-block;
     position: fixed;
     bottom: 0;
@@ -87,6 +87,7 @@
 </head>
 
 <body bgcolor="#008080">
+<all>
 <div class="toolbar">
 <input type="checkbox" id="start-menu">
 <div><label for="start-menu" class="start-button">
@@ -104,7 +105,7 @@
 
 </div>
 
-<div class="window" style="position: sticky; left:90%; width: 375px;">
+<div class="window main" style="left:20%; width: 375px; height:200px; position: absolute;">
     <div class="title-bar">
         <div class="title-bar-text">About Windows</div>
         <div class="title-bar-controls">
@@ -127,7 +128,7 @@ System resources:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb
 </div>
 </div>
 
-<drag id="main" style="cursor: move; position: absolute; left:2%; bottom: 30px;">
+<div class="main" style="cursor: move; left:2%; bottom: 30px; position: absolute;">
   <div class="window" style="width: 420px;left:">
     <div class="title-bar">
       <div class="title-bar-text">
@@ -182,44 +183,60 @@ System resources:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb
             <p class="status-bar-field">2021-02-01 19:46:29</p>
           </div>
   </div>
-
+</div>
+</all>
+<!-- I'm so sorry. -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 <script>
-dragElement(document.getElementById("main"));
+var draggableElements = document.getElementsByClassName("main");
 
-function dragElement(elmnt) {
+for(var i = 0; i < draggableElements.length; i++){
+    dragElement(draggableElements[i]);
+}
+
+function dragElement(elmnt) { 
+
   var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
   if (document.getElementById(elmnt.id + "header")) {
+    // if present, the header is where you move the DIV from:
     document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
   } else {
+    // otherwise, move the DIV from anywhere inside the DIV:
     elmnt.onmousedown = dragMouseDown;
   }
 
   function dragMouseDown(e) {
+    $('.main').css('z-index','0').removeClass('front');
+    $(this).addClass('front').css('z-index','100');
     e = e || window.event;
     e.preventDefault();
+    // get the mouse cursor position at startup:
     pos3 = e.clientX;
     pos4 = e.clientY;
     document.onmouseup = closeDragElement;
+    // call a function whenever the cursor moves:
     document.onmousemove = elementDrag;
   }
 
   function elementDrag(e) {
     e = e || window.event;
     e.preventDefault();
+    // calculate the new cursor position:
     pos1 = pos3 - e.clientX;
     pos2 = pos4 - e.clientY;
     pos3 = e.clientX;
     pos4 = e.clientY;
+    // set the element's new position:
     elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
     elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
   }
 
   function closeDragElement() {
+    // stop moving when mouse button is released:
     document.onmouseup = null;
     document.onmousemove = null;
   }
 }
-
 </script>
 <script>document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))</script>
 <script>
