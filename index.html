@@ -135,7 +135,7 @@
         </div>
     </div>
     <div class="window-body">
-<img ALIGN="Left" src="https://win10nicer.thinkingabout.today/cat.png" alt="LOGO" style="width: 100px">
+<img ALIGN="Left" src="https://koutsie.github.io/win10nicer-site/cat.png" alt="LOGO" style="width: 100px">
 <br>
 Microsoft Windows<br>
 Windows 10<br>
@@ -282,6 +282,7 @@ function dragElement(elmnt) {
 
 function updateClock() {
 	var d = new Date();
+
 	twhtime = d.toLocaleTimeString().replace(/:\d+ /, ' ');
     document.getElementById('time').innerHTML = twhtime;
     setTimeout(updateClock, 1000);
